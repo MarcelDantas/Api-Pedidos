@@ -87,7 +87,7 @@ Pré-requisito: [Docker Desktop](https://www.docker.com/products/docker-desktop)
 
 Clone o repositório e entre na pasta:
 ```bash
-git clone https://github.com/rocha-Railton/Api-Pedidos.git
+git clone https://github.com/TediousGuitar/Api-Pedidos.git
 cd Api-Pedidos
 ```
 
