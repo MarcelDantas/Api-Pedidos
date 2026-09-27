@@ -1,0 +1,38 @@
+services:
+  pedidos:
+    build: .
+    container_name: pedidos-api
+    ports:
+      - "3000:3000"
+    environment:
+      DB_SERVER: sqlserver
+      DB_PORT: 1433
+      DB_NAME: pedidos
+      DB_USER: sa
+      DB_PASSWORD: Api-pedidos#2026
+      PORT: 3000
+    depends_on:
+      - sqlserver
+    networks:
+      - pedidos-network
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: pedidos-sqlserver
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: Api-pedidos#2026
+      MSSQL_PID: Developer
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+    networks:
+      - pedidos-network
+
+volumes:
+  sqlserver-data:
+
+networks:
+  pedidos-network:
+    driver: bridge
